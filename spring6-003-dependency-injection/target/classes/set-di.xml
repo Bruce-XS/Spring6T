@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    外部注入 就是通过ref引用-->
+
+    <!--    内部注入是在 property 下写bean标签 这不要加id 标签-->
+    <bean id="userServiceBean" class="cn.bruce.spring6.service.UserService">
+        <property name="userDao">
+            <bean class="cn.bruce.spring6.dao.UserDao"/>
+        </property>
+    </bean>
+
+
+    <!--    简单注入 使用value  不能使用ref-->
+    <!--    怎么知道spring对java哪些类型定义为 简单类型呢？
+    双按shift 搜索BeanUtils 类下 按住 ctrl+F12 搜索isSimpleValueType 方法-->
+
+    <!--    Check if the given type represents a "simple" value type: a primitive or primitive wrapper, an enum, a String or other CharSequence, a Number, a Date, a Temporal, a URI, a URL, a Locale, or a Class.
+    Void and void are not considered simple value types.
+    Params:
+    type – the type to check
+    Returns:
+    whether the given type represents a "simple" value type
+    See Also:
+    isSimpleProperty(Class)
+
+    public static boolean isSimpleValueType(Class<?> type) {
+            return (Void.class != type && void.class != type &&
+                    (ClassUtils.isPrimitiveOrWrapper(type) ||    8种基本类型 以及对应包装类
+                    Enum.class.isAssignableFrom(type) ||
+                    CharSequence.class.isAssignableFrom(type) ||
+                    Number.class.isA ssignableFrom(type) ||
+                    Date.class.isAssignableFrom(type) ||    java.util.Date 可以是简单类型 不过格式有要求  一般不把它当成简单类型
+                    Temporal.class.isAssignableFrom(type) || Temporal是Java8提供的时间和失去类型
+                    URI.class == type ||
+                    URL.class == type ||
+                    Locale.class == type ||            Locale是语言类，是简单类型
+                    Class.class == type));
+                    ！！！！！！！！
+                    //TODO 【以上简单类型  注入都使用value注入】
+                    ！！！！！！！！-->
+    <bean id="user" class="cn.bruce.spring6.dao.User">
+        <property name="name" value="猪猪侠"/>
+        <property name="age" value="18"/>
+    </bean>
+
+
+
+
+
+</beans>

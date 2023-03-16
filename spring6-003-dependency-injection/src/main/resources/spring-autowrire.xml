@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--&lt;!&ndash;    自动装配 也是基于set方式实现的  根据名字装配&ndash;&gt;-->
+<!--    <bean id="orderService" class="cn.bruce.spring6.service.OrderService2" autowire="byName"/>-->
+
+<!--&lt;!&ndash;    根据名称装配 id名称必须是set方法 除掉set 首字母变小写  setOrderDao()&ndash;&gt;-->
+<!--    <bean id="orderDao" class="cn.bruce.spring6.dao.OrderDao"/>-->
+
+
+<!--    根据类型自动装配-->
+<!--    只能对应数量个  上面不注释就会报错-->
+    <bean class="cn.bruce.spring6.dao.UserDao"/>
+    <bean class="cn.bruce.spring6.dao.OrderDao"/>
+
+    <bean id="or" class="cn.bruce.spring6.service.OrderService" autowire="byType"/>
+
+</beans>

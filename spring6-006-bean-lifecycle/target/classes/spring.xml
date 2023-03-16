@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--    配置bean后处理器-->
+    <!--    注意：这个bean后处理器 作用于整个配置文件中的所有bean-->
+    <bean class="spring6.LogBeanPostProcessor10"/>
+
+    <!--    手动指定 init destroy-->
+<!--    <bean id="user" class="spring6.User7" init-method="initBean" destroy-method="destroyBean">-->
+<!--        <property name="name" value="猪猪侠"/>-->
+<!--    </bean>-->
+
+    <!--    手动指定 init destroy-->
+    <bean id="user" class="spring6.User10" init-method="initBean" destroy-method="destroyBean">
+        <property name="name" value="猪猪侠"/>
+    </bean>
+
+</beans>

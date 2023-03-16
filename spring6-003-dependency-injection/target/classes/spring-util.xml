@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--    引入util 约束-->
+    <util:properties id="pro">
+        <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+        <prop key="url">jdbc:mysql://localhost:3306/spring6</prop>
+        <prop key="username">root</prop>
+        <prop key="password">123456</prop>
+    </util:properties>
+
+    <bean id="ds1" class="cn.bruce.spring6.jdbc.MyDataSource2">
+        <property name="properties" ref="pro"/>
+    </bean>
+
+    <bean id="ds2" class="cn.bruce.spring6.jdbc.MyDataSource3">
+        <property name="properties" ref="pro"/>
+    </bean>
+
+    <!--    数据源1  当有多个数据源时 下面的pro需要写多次  可以实验util 引用-->
+<!--    <bean id="ds1" class="cn.bruce.spring6.jdbc.MyDataSource2">-->
+<!--        <property name="properties">-->
+<!--            <props>-->
+<!--                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>-->
+<!--                <prop key="url">jdbc:mysql://localhost:3306/spring6</prop>-->
+<!--                <prop key="username">root</prop>-->
+<!--                <prop key="password">123456</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!--    <bean id="ds1" class="cn.bruce.spring6.jdbc.MyDataSource2">-->
+    <!--        <property name="properties">-->
+    <!--            <props>-->
+    <!--                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>-->
+    <!--                <prop key="url">jdbc:mysql://localhost:3306/spring6</prop>-->
+    <!--                <prop key="username">root</prop>-->
+    <!--                <prop key="password">123456</prop>-->
+    <!--            </props>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+</beans>

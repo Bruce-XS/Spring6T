@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userDao" class="cn.bruce.spring6.dao.UserDao"/>
+    <bean id="orderDao" class="cn.bruce.spring6.dao.OrderDao"/>
+
+    <bean id="orderServiceBean" class="cn.bruce.spring6.service.OrderService">
+        <constructor-arg index="0" ref="userDao"/>
+        <constructor-arg index="1" ref="orderDao"/>
+    </bean>
+
+    <bean id="orderServiceBean2" class="cn.bruce.spring6.service.OrderService">
+        <constructor-arg name="userDao" ref="userDao"/>
+        <constructor-arg name="orderDao" ref="orderDao"/>
+    </bean>
+
+    <bean id="orderServiceBean3" class="cn.bruce.spring6.service.OrderService">
+        <!--        故意弄反顺序 spring也可以通过类型匹配上-->
+        <constructor-arg ref="orderDao"/>
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+</beans>
